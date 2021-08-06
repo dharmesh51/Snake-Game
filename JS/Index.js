@@ -6,8 +6,8 @@ const BackgroundSound = new Audio('/assets/musicsound.mp3');
 let inputDir = { x: 0, y: 0 };
 let LastinputDir = { x: 0, y: 0 };
 let lastRenderTime = 0;
-const Snake_Speed = 10;
-let Score = 0;
+let Snake_Speed = 5;
+let score = 0;
 let snakeBody = [{ x: 10, y: 15 }];
 let food = { x: 7, y: 10 };
 
@@ -57,10 +57,20 @@ function gameEngine() {
     
     
     
-    //If you have eaten the food, icreament the score and regenerate the food
+    //If snake eaten the food, icreament the score and regenerate the food
     
     if (snakeBody[0].x === food.x && snakeBody[0].y === food.y) {
         FoodSound.play();
+        score += 1;
+        if (score>highestscore) {
+            let highestscore = score;
+            localStorage.setItem("HighestScore", JSON.stringify(highestscore));
+            hiscoreBox.innerHTML = "HighScore: " + highestscore;
+        }
+        scoreBox.innerHTML = "Score: " + score;
+        if (score%3 === 0) {
+            Snake_Speed += 1 ;
+        }
         snakeBody.unshift({ x: snakeBody[0].x + inputDir.x, y: snakeBody[0].y + inputDir.y });
         let a = 2;
         let b = 22;
@@ -69,7 +79,7 @@ function gameEngine() {
         
     }
     
-    //Moving thr Snake
+    //Moving the Snake
     for (let i = snakeBody.length - 2; i >= 0; i--) {
         snakeBody[i + 1] = { ...snakeBody[i] }; //for solve the reference proble
     }
@@ -117,6 +127,16 @@ function gameEngine() {
 
 
 //Main Logic Start Here
+let highscore = localStorage.getItem("HighestScore");
+if (highscore === null) {
+    highestscore = 0;
+    localStorage.setItem("HighestScore", JSON.stringify(highestscore));
+}
+else{
+    highestscore = JSON.parse(highscore);
+    hiscoreBox.innerHTML = "HighScore: " + highscore;
+}
+
 // Why to use requestAnimationFrame? 
 // It will give smooth game play and highest FPS game paly.And also faster than setinterval and setTimeout method.
 window.requestAnimationFrame(main);
@@ -130,7 +150,6 @@ window.addEventListener('keydown', e => {
             if (LastinputDir.y !== 0) {
                 break;
             }
-            // console.log("ArrowUp");
             inputDir = { x: 0, y: -1 };
             break;
 
@@ -138,7 +157,6 @@ window.addEventListener('keydown', e => {
             if (LastinputDir.y !== 0) {
                 break;
             }
-            // console.log("ArrowDown");
             inputDir = { x: 0, y: 1 };
             break;
 
@@ -146,7 +164,6 @@ window.addEventListener('keydown', e => {
             if (LastinputDir.x !== 0) {
                 break;
             }
-            console.log("ArrowLeft");
             inputDir = { x: -1, y: 0 };
             break;
 
@@ -154,7 +171,6 @@ window.addEventListener('keydown', e => {
             if (LastinputDir.x !== 0) {
                 break;
             }
-            console.log("ArrowRight");
             inputDir = { x: 1, y: 0 };
             break;
 
@@ -163,4 +179,83 @@ window.addEventListener('keydown', e => {
     }
 
 });
+
+const ButtonDirUP = document.querySelector("#U");
+ButtonDirUP.addEventListener("click" , (e) =>{
+    DirectionSound.play();
+    BackgroundSound.play();
+    LastinputDir = inputDir;
+    switch (e.target.id) {
+        case "U":
+            if (LastinputDir.y !== 0) {
+                break;
+            }
+            inputDir = { x: 0, y: -1 };
+            break;
+    
+        default:
+            break;
+
+        
+        }
+
+});
+const ButtonDirDown = document.querySelector(".D");
+ButtonDirDown.addEventListener("click" , (e) =>{
+    DirectionSound.play();
+    BackgroundSound.play();
+    LastinputDir = inputDir;
+    switch (e.target.id) {
+        case "D":
+            if (LastinputDir.y !== 0) {
+                break;
+            }
+            inputDir = { x: 0, y: 1 };
+            break;
+
+        default:
+            break;
+        }
+
+});
+
+const ButtonDirLeft = document.querySelector(".L");
+ButtonDirLeft.addEventListener("click" , (e) =>{
+    DirectionSound.play();
+    BackgroundSound.play();
+    LastinputDir = inputDir;
+    switch (e.target.id) {
+        case "L":
+            if (LastinputDir.x !== 0) {
+                break;
+            }
+            inputDir = { x: -1, y: 0 };
+            break;
+
+        default:
+            break;
+        }
+
+});
+
+const ButtonDirRight = document.querySelector(".R");
+ButtonDirRight.addEventListener("click" , (e) =>{
+    DirectionSound.play();
+    BackgroundSound.play();
+    LastinputDir = inputDir;
+    switch (e.target.id) {
+        case "R":
+            if (LastinputDir.x !== 0) {
+                break;
+            }
+            inputDir = { x: 1, y: 0 };
+            break;
+
+
+        default:
+            break;
+        }
+
+});
+
 

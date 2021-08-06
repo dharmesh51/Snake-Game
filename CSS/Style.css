@@ -4,18 +4,26 @@
 }
 
 .container{
-    background-color: rgb(175, 174, 174);
+    background-color: rgb(196, 196, 196);
     width: 100vw;
     height: 100vh;
     /* background-size: 100vw 100vh; */
-    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-repeat: no-repeat;
     
-    
-
 }
+
+ .fluid_container{
+    width:95vmin;
+    height: 90vmin;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+} 
+
 #background{
     background-color: rgb(44, 43, 43);
     width:95vmin;
@@ -28,6 +36,27 @@
     box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.2);
 
 }
+.scoreTable{
+    display:flex;
+    justify-content: space-between;
+    
+    
+}
+
+#scoreBox{
+    
+    font-size: 35px;
+    font-weight: bold;
+    font-family: 'New Tegomin', serif;
+}
+
+#hiscoreBox{
+   
+    font-size: 35px;
+    font-weight: bold;
+    font-family: 'New Tegomin', serif;
+}
+
 .head{
     background-color: rgb(240, 153, 22);
     border: .25vmin solid black;
@@ -43,4 +72,91 @@
     border-radius: 20px;
     border: .25vmin solid black;
 
+}
+.button_container{
+    display: none;
+}
+
+
+/* for Responsiveness */
+
+@media (max-width:768px){
+
+    .container{
+        height: 73vh;
+        align-items: flex-start;
+    }
+
+    .fluid_container{
+         height: 100vmin;
+    } 
+    .button_container{
+        background-color: rgb(196, 196, 196);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .buttons{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 230px;
+        height: 275px;
+   }
+   #Arrow{
+       font-size:10rem ;
+   }
+  .left_right_btn{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5rem;
+  }
+  span{
+      width: 100px;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+  
+    
+} 
+
+@media (max-width:420px){
+
+    .container{
+        height: 55vh;
+        align-items: flex-start;
+    }
+
+    .fluid_container{
+         height: 125vmin;
+    } 
+    
+    .buttons{
+        width: 150px;
+        height: 290px;
+   }
+   #Arrow{
+       font-size:5.5rem ;
+   }
+  .left_right_btn{
+      gap: 5rem;
+  }
+  span{
+      width: 38px;
+      height: 52px;
+      
+  }
+  
+  #scoreBox{
+      font-size: 20px;
+  }
+  
+  #hiscoreBox{
+        font-size: 20px;
+    }
 }

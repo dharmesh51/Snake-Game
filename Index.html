@@ -5,19 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SnakeGame</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="CSS/Style.css">
     <link rel="shortcut icon" href="#">
 
 </head>
 <body>
     <div class="container">
-        <div id="background">
-        <!-- <div class="snake"> -->
-        <!-- <div class="food"> -->
+        <div class="fluid_container">
+            <div class="scoreTable">
+                <div id="scoreBox">Score: 0</div>
+                <div id="hiscoreBox">HighScore: 0</div>
+            </div>
+            <div id="background"></div>
+        </div>
         
-            
+    </div>
+    <div class="button_container">
+        <div class="buttons">
+            <span class="U" id="Arrow" ><i class="fas fa-caret-up" id="U"></i></span>
+            <div class="left_right_btn">
+                <span class="L" id="Arrow"><i class="fas fa-caret-left" id="L"></i></span>
+                <span class="R" id="Arrow"><i class="fas fa-caret-right" id="R"></i></span>
+            </div>
+            <span class="D" id="Arrow"><i class="fas fa-caret-down" id="D"></i></span>
         </div>
     </div>
+    
 </body>
 <script src="/JS/Index.js" ></script>
 </html>
